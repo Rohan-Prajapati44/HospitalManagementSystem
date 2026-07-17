@@ -366,9 +366,15 @@
             <div class="welcome-box d-flex justify-content-between align-items-center">
 
 
-                <h4 class="text-success">
-                    Welcome, <%= user%>
-                </h4>
+                <%  String email = (String) session.getAttribute("email");
+
+                    if (email == null) {
+                        response.sendRedirect("login.jsp");
+                        return;
+                    }
+                %>
+
+                <h3 class="text-success">Welcome, <%= email%></h3>
 
                 <a class="btn btn-outline-danger" href="index.jsp">
                     <i class="fa fa-right-from-bracket"></i> Logout
